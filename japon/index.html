@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japon 2026</title>
+<style>
+  body { font: 18px/1.5 system-ui, sans-serif; margin: 0; padding: 24px 16px; max-width: 32rem; margin-inline: auto; color: #222; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #eee; background: #111; } }
+  a.open { display: block; text-align: center; padding: 16px; margin: 24px 0 16px; border-radius: 12px; background: #c62828; color: #fff; text-decoration: none; font-weight: 600; }
+  [hidden] { display: none; }
+</style>
+</head>
+<body>
+<h1>Japon 2026</h1>
+<div id="step" hidden>
+  <p>Une étape vous a été envoyée.</p>
+  <a class="open" id="open" href="#">Ouvrir dans l'app</a>
+  <p>Si rien ne s'ouvre : copiez le message, ouvrez Japon 2026 → Infos → Coller une étape reçue.</p>
+</div>
+<p id="empty" hidden>Cette page sert à l'app Japon 2026.</p>
+<script>
+function openLink(hash) {
+  if (!/^#s1\.[A-Za-z0-9_.-]+$/.test(hash)) return null;
+  return 'intent://recevoir?d=' + hash.slice(1) +
+    '#Intent;scheme=japon2026;package=be.ludo.japon2026;end';
+}
+if (typeof document !== 'undefined') {
+  var link = openLink(location.hash);
+  if (link) {
+    document.getElementById('open').href = link;
+    document.getElementById('step').hidden = false;
+  } else {
+    document.getElementById('empty').hidden = false;
+  }
+}
+if (typeof module !== 'undefined') module.exports = { openLink: openLink };
+</script>
+</body>
+</html>
